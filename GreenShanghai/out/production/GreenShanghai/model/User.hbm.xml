@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.User" table="user" schema="greenshanghai">
+        <id name="id">
+            <column name="id" sql-type="int(255)"/>
+        </id>
+        <property name="username">
+            <column name="username" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="password">
+            <column name="password" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="name">
+            <column name="name" sql-type="varchar(255)" not-null="false"/>
+        </property>
+        <property name="telephone">
+            <column name="telephone" sql-type="varchar(255)" not-null="false"/>
+        </property>
+        <property name="code">
+            <column name="code" sql-type="varchar(255)" not-null="false"/>
+        </property>
+        <property name="image">
+            <column name="image" sql-type="varchar(255)" not-null="false"/>
+        </property>
+        <property name="coin">
+            <column name="coin" sql-type="int(255)" not-null="false"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(255)" not-null="false"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="int(255)" not-null="false"/>
+        </property>
+        
+        <set name="pasteSet">
+            <key column="userid"></key>
+            <one-to-many class="model.Paste"></one-to-many>
+        </set>
+
+        <set name="answerPasteSet">
+            <key column="pasteid"></key>
+            <one-to-many class="model.Answer"></one-to-many>
+        </set>
+
+        
+    </class>
+</hibernate-mapping>

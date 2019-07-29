@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.Paste" table="paste" schema="greenshanghai">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="title">
+            <column name="title" sql-type="varchar(1000)" length="1000" not-null="true"/>
+        </property>
+        <property name="content">
+            <column name="content" sql-type="varchar(3000)" length="3000" not-null="true"/>
+        </property>
+        <property name="offer">
+            <column name="offer" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="ansnum">
+            <column name="ansnum" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="createtime">
+            <column name="createtime" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="glanceover">
+            <column name="glanceover" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="solve">
+            <column name="solve" sql-type="int(11)" not-null="false"/>
+        </property>
+        <property name="isdelete">
+            <column name="isdelete" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="ansid">
+            <column name="ansid" sql-type="int(11)" not-null="false"/>
+        </property>
+        
+        <many-to-one name="user" class="model.User" column="userid" insert="true"></many-to-one>
+
+        <set name="userAnswerSet">
+            <key column="userid"></key>
+            <one-to-many class="model.Answer"></one-to-many>
+        </set>
+
+    </class>
+</hibernate-mapping>
